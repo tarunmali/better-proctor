@@ -2,7 +2,7 @@ import React, {useRef} from 'react';
 import Webcam from 'react-webcam';
 import draw from './utilities'
 
-
+let prediction;
 function BoxModel() {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
@@ -42,9 +42,9 @@ const returnTensors = false;
 
           // Make detections
 
-          const prediction = await model.estimateFaces(video, returnTensors);
+          prediction = await model.estimateFaces(video, returnTensors);
 
-          console.log("Tarun",prediction)
+          console.log("Mali",prediction.length)
 
           const ctx = canvasRef.current.getContext("2d");
           draw(prediction, ctx)
@@ -54,6 +54,17 @@ const returnTensors = false;
 
      runFacedetection();
    return (
+    <div>
+          <div className='Perin'
+          style={
+            {padding: "10px",
+            backgroundColor: "blue",
+            color: 'white',
+          }
+
+          }
+          > <h1>{prediction!==undefined?prediction.length:0}</h1></div>
+           
      <div className="BoxModel">
        <header className="BoxModel-header">
          <Webcam
@@ -92,6 +103,8 @@ const returnTensors = false;
           
            
        </header>
+     </div>
+
      </div>
    );
  
