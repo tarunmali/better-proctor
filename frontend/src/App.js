@@ -46,13 +46,13 @@ const App = () => {
         <Typography variant="h2" align="center">Video Chat</Typography>
       </AppBar> */}
 
+      <BoxModel/>
       <Time/>
       <VideoPlayer />
       <Ml />
       <Sidebar>
         <Notifications />
       </Sidebar>
-      <BoxModel/>
     </div>
   );
 };

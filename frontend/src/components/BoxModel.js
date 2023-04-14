@@ -1,9 +1,12 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import Webcam from 'react-webcam';
 import draw from './utilities'
 
 let prediction;
+
+
 function BoxModel() {
+  const [ predictionSize, setPredictionSize] =useState(0);
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
   const blazeface = require('@tensorflow-models/blazeface')
@@ -41,8 +44,10 @@ const returnTensors = false;
             canvasRef.current.height = videoHeight;
 
           // Make detections
-
           prediction = await model.estimateFaces(video, returnTensors);
+
+          setPredictionSize(prediction.length)
+          
 
           console.log("Mali",prediction.length)
 
@@ -52,7 +57,9 @@ const returnTensors = false;
 
       }
 
-     runFacedetection();
+     runFacedetection();{
+
+
    return (
     <div>
           <div className='Perin'
@@ -63,7 +70,7 @@ const returnTensors = false;
           }
 
           }
-          > <h1>{prediction!==undefined?prediction.length:0}</h1></div>
+          > <h1>{(predictionSize==0 || predictionSize>1)? `Invalid as No. of faces is ${predictionSize} `: "Go ahead and train your model"  }</h1></div>
            
      <div className="BoxModel">
        <header className="BoxModel-header">
@@ -73,13 +80,13 @@ const returnTensors = false;
             position: "absolute",
             marginLeft: "auto",
             marginRight: "auto",
-            top:1000,
-            left:0,
+            top:100,
+            left:1080,
             right:80,
             textAlign: "center",
             zIndex:9,
-            width:640,
-            height:480,
+            width:320,
+            height:240,
          }}
           />
  
@@ -89,13 +96,13 @@ const returnTensors = false;
            position: "absolute",
            marginLeft: "auto",
            marginRight: "auto",
-           top:1000,
-           left:0,
+           top:100,
+           left:1080,
            right:80,
            textAlign: "center",
            zIndex:9,
-           width:640,
-           height:480,
+           width:320,
+           height:240,
         }}
          />
          
@@ -106,7 +113,7 @@ const returnTensors = false;
      </div>
 
      </div>
-   );
+   );}
  
 }
 export default BoxModel;
