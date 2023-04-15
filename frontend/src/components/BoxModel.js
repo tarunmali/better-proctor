@@ -70,7 +70,7 @@ const returnTensors = false;
           }
 
           }
-          > <h1>{(predictionSize==0 || predictionSize>1)? `Invalid as No. of faces is ${predictionSize} `: "Go ahead and train your model"  }</h1></div>
+          > <h1>{(predictionSize==0 || predictionSize>1)? `Model loading / Invalid as No. of faces is ${predictionSize} `: "Go ahead and train your model"  }</h1></div>
            
      <div className="BoxModel">
        <header className="BoxModel-header">

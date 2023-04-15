@@ -110,8 +110,8 @@ const Ml = () => {
 
      { net!==0?      
       <div className='form-inline' style={{width:'500px'}}>
-      <button className='col-md-5' onClick={learn}> Valid environemnt</button>
-      <button className='boom col-md-5 offset-1' onClick={earn}> Invalid environemnt</button>
+      <button className='col-md-5' onClick={learn}> Valid environement</button>
+      <button className='boom col-md-5 offset-1' onClick={earn}> Invalid environement</button>
 
 
 
